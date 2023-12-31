@@ -8,7 +8,7 @@ const app = express()
 const expressLayouts = require('express-ejs-layouts')
 const indexRouter = require('./routes/index')
 const authorsRouter = require('./routes/authors')
-
+const bookRouter = require('./routes/books')
 
 
 
@@ -28,6 +28,7 @@ app.use(express.static('public'))
 app.use('/', indexRouter)
 app.use(express.urlencoded({ limit: '10mb', extended: false }))
 app.use('/authors', authorsRouter)
+app.use('/books', bookRouter)
 app.use(express.json())
 
 
