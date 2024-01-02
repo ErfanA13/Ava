@@ -58,11 +58,12 @@ router.post('/', upload.single('cover'), async (req, res) => {
     })
     try {
         const newBook = await book.save()
-        res.redirect(`/books`)
-        // res.redirect(`books/${newBook.id}`)
-    } catch {
-        if (book.coverImageName != null) {
-        removeBookCover(book.coverImageName)
+        res.redirect('books')
+        //res.redirect(`books/${newBook.id}`)
+    } catch (error) {
+        console.error('Error creating book:', error.message);  
+        if (fileName != null) {
+            removeBookCover(fileName)
         }
         renderNewPage(res, book, true)
     }
@@ -81,7 +82,7 @@ async function renderNewPage(res, book, hasError = false) {
             authors: authors,
             book: book,
         }
-        if (hasError) params.errorMassage = 'Error Creating Books'
+        if (hasError) params.errorMessage = 'Error Creating Books'
         res.render('books/new', params)
     } catch {
         res.redirect('/books')

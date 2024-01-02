@@ -9,6 +9,7 @@ const expressLayouts = require('express-ejs-layouts')
 const indexRouter = require('./routes/index')
 const authorsRouter = require('./routes/authors')
 const bookRouter = require('./routes/books')
+const methodOverride = require('method-override')
 
 
 
@@ -19,7 +20,7 @@ const db = mongoose.connection
 db.on('error', error => console.error(error))
 db.once('open', () => console.log('connected to mongoose'))
 
-
+app.use(methodOverride('_method'))
 app.set('view engine', 'ejs')
 app.set('views', __dirname + '/views')
 app.set('layout', 'layouts/layout')
@@ -30,6 +31,7 @@ app.use(express.urlencoded({ limit: '10mb', extended: false }))
 app.use('/authors', authorsRouter)
 app.use('/books', bookRouter)
 app.use(express.json())
+
 
 
 
