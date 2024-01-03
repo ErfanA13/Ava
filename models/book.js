@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
 const path = require('path')
 const coverImageBasePath = 'uploads/bookCover'
 const bookSchema = new mongoose.Schema({
+
     title:{
         type: String,
         required: true
@@ -31,6 +32,7 @@ const bookSchema = new mongoose.Schema({
         required: true,
         ref: 'Author'
     }
+
 
 })
 

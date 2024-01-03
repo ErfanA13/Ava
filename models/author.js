@@ -22,4 +22,4 @@ authorSchema.pre('deleteOne', { document: true, query: false }, async function (
 });
 
 
-module.exports = mongoose.model('author', authorSchema)
+module.exports = mongoose.model('Author', authorSchema)
