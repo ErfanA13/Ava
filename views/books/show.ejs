@@ -7,6 +7,6 @@
 
 <a href="/books/<%= book.id %>/edit">Edit</a>
 <form method="POST" action="/books/<%= book.id %>?_method=DELETE">
-    <button type="submit">Delete</button>
+    <button class="btn btn-danger" type="submit">Delete</button>
 </form>
 <a href="/authors/<%= book.author.id %>">View Author</a>
